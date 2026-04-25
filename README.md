@@ -6,7 +6,8 @@ Turn logs into answers
 
 ### 📌 Overview
 
-AI-powered log analyzer that transforms raw application logs into clear summaries, probable root causes, and actionable recommendations.
+- AI-powered log analyzer that transforms raw application logs into clear summaries, probable root causes, and actionable recommendations.
+- **Highly configurable!** INCLUDE and EXCLUDE keywords so the app can further sanitize the logs and be efficient in token management
 
 ---
 
@@ -16,12 +17,13 @@ AI-powered log analyzer that transforms raw application logs into clear summarie
 -  Understandable feedback (summary, root cause, severity, recommendation) using GPT 5.4
 - **Preprocessing**: Handles large log information omits unnecessary information and focus on errors and relevant information.
 - Token Management: Because of **preprocessing** feature, request tokens are handled efficiently
+- Configuration Files: For file uploads, you can specify the context, keywords and maximum lines to include in the logs
 
 --- 
 
 ### 🛠 Tech Stack
 - Language: Python
-- Libraries: Uvicorn, FastAPI, OpenAI
+- Libraries: FastAPI, OpenAI, uvicorn
 
 ---
 
@@ -62,8 +64,16 @@ E --> E1[Return summary]
 #### Requirements: 
 - Python 3.14.4
 - Git
-- Create .env file (API key storage)
 - API Key from OpenAI
+- Create .env file (API key storage)
+- Set configuration or use these defaults
+```
+OPENAI_API_KEY={OPENAI_API_KEY}
+LOG_INCLUDE_KEYWORDS=ERROR,EXCEPTION,FATAL,WARN,TIMEOUT,REFUSED,FAILED,TRACEBACK,NULLPOINTER,503,500
+LOG_EXCLUDE_KEYWORDS=DEBUG,HEALTHCHECK,/health,ping,heartbeat,INFO OK
+LOG_CONTEXT_LINES=3
+LOG_MAX_LINES=200
+```
 
 Follow these steps to set up and run the project locally.
 #### 1. Clone the repository (Terminal or Command Prompt):

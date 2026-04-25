@@ -1,0 +1,33 @@
+2026-04-25 09:15:01 INFO  [main] Starting LogSage Application v0.1
+2026-04-25 09:15:02 INFO  [db] Database connection pool initialized
+2026-04-25 09:15:03 DEBUG [cache] Redis health check passed
+2026-04-25 09:15:05 INFO  [http] GET /health 200 OK
+
+2026-04-25 09:16:10 INFO  [orders] Processing order id=84521 user=luiz
+2026-04-25 09:16:11 DEBUG [orders] Fetching customer profile
+2026-04-25 09:16:12 WARN  [payments] Payment gateway latency detected: 3200ms
+2026-04-25 09:16:13 INFO  [payments] Retrying transaction...
+
+2026-04-25 09:16:18 ERROR [payments] Transaction failed for order id=84521
+java.net.SocketTimeoutException: Read timed out
+    at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:278)
+    at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:304)
+    at java.base/java.net.SocketInputStream.read(SocketInputStream.java:186)
+
+2026-04-25 09:16:20 WARN  [orders] Rolling back order id=84521
+
+2026-04-25 09:17:01 INFO  [inventory] Sync job started
+2026-04-25 09:17:02 DEBUG [inventory] Loaded 2500 SKUs
+2026-04-25 09:17:04 ERROR [inventory] Failed to update product SKU-9911
+org.springframework.dao.DeadlockLoserDataAccessException: Deadlock found when trying to get lock
+    at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(...)
+    at org.springframework.jdbc.core.JdbcTemplate.execute(...)
+
+2026-04-25 09:17:10 INFO  [inventory] Retrying failed updates
+
+2026-04-25 09:18:44 ERROR [api] POST /checkout returned HTTP 503
+Caused by: upstream service unavailable
+
+2026-04-25 09:18:50 DEBUG [metrics] CPU usage 42%
+2026-04-25 09:18:55 INFO  [scheduler] Nightly cleanup scheduled
+2026-04-25 09:19:02 FATAL [main] Application shutting down due to repeated payment failures

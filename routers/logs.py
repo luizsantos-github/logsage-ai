@@ -5,9 +5,9 @@ router = APIRouter()
 
 @router.post("/analyze",
              status_code=status.HTTP_200_OK,
-             description="For simple and concise logs")
+             description="For simple and concise logs, preferably in a single line")
 async def analyze_logs(log_content: LogAnalyzerRequest, request: Request):
-    # Dev Note: access the logservice class so we can call its services (simple DI)
+    # Note: access the logservice class so we can call its services (simple DI)
     service = request.app.state.log_service
 
     return service.analyze_log(log_content)
@@ -15,7 +15,7 @@ async def analyze_logs(log_content: LogAnalyzerRequest, request: Request):
 
 @router.post("/upload",
              status_code=status.HTTP_200_OK,
-             description="For bigger log files")
+             description="For log files to be preprocessed and analyzed")
 async def upload_log(request: Request, file: UploadFile = File(...)):
     service = request.app.state.log_service
 
