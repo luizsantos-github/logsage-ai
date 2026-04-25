@@ -33,13 +33,17 @@ logsage-ai/
 │── utils/ 
 │── README.md 
 │── requirements.txt 
+│── .env 
 ```
 
 ---
 
 ### ⚙️ Installation
 #### Requirements: 
-Python, Git installed
+- Python 3.14.4
+- Git
+- Create .env file (API key storage)
+- API Key from OpenAI
 
 Follow these steps to set up and run the project locally.
 #### 1. Clone the repository (Terminal or Command Prompt):
@@ -68,8 +72,10 @@ Once running, open:
 
 ---
 
-### Leaning Points
-📘 Using OpenAI and incorporating FastAPI knowledge and clean backend implementation
+### 📘 Leaning Points
+- OpenAI for analysis
+- FastAPI implementation
+- Organized backend implementation
 
 ---
 
@@ -84,14 +90,12 @@ Once running, open:
 - Feature: Seamless integration with a production ready system
 - Computer Use Agent  - skip the human upload part and periodically reads the logs 
 - QOL: Token management
-- Production ready structure
-
 
 ---
 
 ### 📄 License
 
-MIT
+MIT-License
 
 ---
 
