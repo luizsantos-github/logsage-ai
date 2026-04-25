@@ -36,33 +36,22 @@ logsage-ai/
 │── .env 
 ```
 
-### 📐 Architecture Diagram
+### 📐 Pipeline Diagram
 ```mermaid
 flowchart TD
 
-A[User / Engineer] --> B[FastAPI Gateway]
+A[User / Engineer] --> B[User submits raw logs]
 
-B --> C[Request Validation Layer]
-C --> D[Log Processing Service]
+B --> C[Fast API receives logs]
+C --> D[Preprocessor cleans noise]
 
-D --> D1[Chunking Engine]
-D1 --> D2[Noise Filtering]
+D --> D1[Extract relevant errors]
+D1 --> D2[Chunk if too large]
 
-D2 --> E[LLM Orchestration Layer]
+D2 --> E[Send best part to LLM]
 
-E --> E1[Prompt Template Engine]
-E1 --> E2[OpenAI API / GPT-5.4]
+E --> E1[Return summary]
 
-E2 --> F[Response Formatter]
-
-F --> G[Structured Output Generator]
-G --> H[JSON Response API]
-
-H --> A
-
-%% Optional future expansion
-H -.-> I[(Optional: DB Logging - Postgres)]
-H -.-> J[(Optional: Observability - Logs / Metrics)]
 ```
 ---
 
