@@ -12,7 +12,10 @@ AI-powered log analyzer that transforms raw application logs into clear summarie
 
 ### 🚀 Features
 - `/analyze`: Paste log directly 
+- `/upload-log`:  File Upload with preprocessing
 -  Understandable feedback (summary, root cause, severity, recommendation) using GPT 5.4
+- **Preprocessing**: Handles large log information omits unnecessary information and focus on errors and relevant information.
+- Token Management: Because of **preprocessing** feature, request tokens are handled efficiently
 
 --- 
 
@@ -40,7 +43,7 @@ logsage-ai/
 ```mermaid
 flowchart TD
 
-A[User / Engineer] --> B[User submits raw logs]
+A[User / Engineer] --> B[User submits simple / file uploaded logs]
 
 B --> C[Fast API receives logs]
 C --> D[Preprocessor cleans noise]
@@ -97,9 +100,6 @@ Once running, open:
 ---
 
 ### 🔮 Future Improvements
-- Feature: - `/upload-log`:  File Upload with preprocessing
-- **Preprocessing**: Handles large log information omits unnecessary information and focus on errors and relevant information.
-- Token Management: Because of **preprocessing** feature, request tokens are handled efficiently
 - Feature: Project Exclusive Analysis using memory of previous logs
     - Insight per developer or project etc
     - `/insights`  - summarizes the most common errors / warnings encountered

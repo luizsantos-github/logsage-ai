@@ -1,6 +1,21 @@
+import os
 from fastapi import FastAPI
-from routers import logs
+from openai import OpenAI
+from routers.logs import router as log_router
+from services.log_service import LogService
+from dotenv import load_dotenv
 
-app = FastAPI()
+load_dotenv()
 
-app.include_router(logs.router)
+app = FastAPI(title="Log Sage AI v0.1")
+ai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# state declaration to use within the app
+log_service = LogService(ai_client)
+app.state.log_service = log_service
+
+app.include_router(log_router, prefix="/logs")
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
