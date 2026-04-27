@@ -78,7 +78,7 @@ LOG_MAX_LINES=200
 Follow these steps to set up and run the project locally.
 #### 1. Clone the repository (Terminal or Command Prompt):
 
-``git clone https://github.com/yourusername/project-name.git``
+``git clone https://github.com/luizsantos-github/logsage-ai.git``
 
 ##### 2. Navigate to the Project Folder
 ```cd project-name```
